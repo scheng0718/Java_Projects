@@ -5,8 +5,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class GameFrame extends JFrame {
-    //constructor
+    Airplane airplane;
+
     public GameFrame() {
+        //build an airplane
+        airplane = new Airplane();
         //Set the width and height
         this.setSize(500, 760);
         //title
@@ -37,12 +40,15 @@ public class GameFrame extends JFrame {
         //draw the background
         BufferedImage image = (BufferedImage)this.createImage(this.getSize().width, this.getSize().height);
         Graphics bi = image.getGraphics();
+        //Draw an background, (0, 0) is coordination
+        bi.drawImage(new ImageIcon("img/Airplane_background.png").getImage(), 0, 0, null);
+        bi.drawImage(airplane.img, airplane.x, airplane.y, null);
 
-        bi.drawImage(new ImageIcon("aircraft.png").getImage(), 0, 0, null);
-
+        //generator
         g.drawImage(image, 0, 0, null);
     }
     public static void main(String[] args) {
+
         GameFrame frame = new GameFrame();
     }
 }
