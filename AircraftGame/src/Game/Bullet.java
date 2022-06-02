@@ -8,12 +8,12 @@ public class Bullet {
     int x;
     int y;
 
-    int width = 50;
-    int height = 50;
+    int width = 30;
+    int height = 30;
     //speed of the bullet
-    int speed = 10;
+    int speed = 15;
 
-    Image image = new ImageIcon("C:/Users/schen/Dropbox/Software_Engineer/Java_Project/AircraftGame/img/bullet.png").getImage();
+    Image image = new ImageIcon("img/bullet.png").getImage();
 
     public Bullet(int x, int y) {
         this.x = x;

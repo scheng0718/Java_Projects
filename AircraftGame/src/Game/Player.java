@@ -35,7 +35,7 @@ public class Player extends KeyAdapter {
                 break;
         }
     }
-    //release the key
+    //when release the key
     @Override
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
@@ -57,6 +57,6 @@ public class Player extends KeyAdapter {
     }
     //load the bullet
     public void addBullet() {
-        frame.bullets.add(new Bullet(frame.airplane.x + 5, frame.airplane.y - 20));
+        frame.bullets.add(new Bullet(frame.airplane.x + 10, frame.airplane.y - 20));
     }
 }
