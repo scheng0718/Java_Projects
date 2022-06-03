@@ -1,63 +1,58 @@
-package Game;
+package PlaneGame;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-//Define a player to extend the key adapter
 public class Player extends KeyAdapter {
-
-    //Airplane airPlane;
     GameFrame frame;
     public Player(GameFrame frame) {
-        //this.airPlane = airPlane;
+
         this.frame = frame;
     }
-    //press the key
+
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        //up: 38, down: 40, left: 37, right: 39
         switch (keyCode) {
             case 38:
-                frame.airplane.up = true;
+                frame.plane.up = true;
                 break;
             case 40:
-                frame.airplane.down = true;
+                frame.plane.down = true;
                 break;
             case 37:
-                frame.airplane.left = true;
+                frame.plane.left = true;
                 break;
             case 39:
-                frame.airplane.right = true;
+                frame.plane.right = true;
                 break;
             case 32:
                 addBullet();
                 break;
         }
     }
-    //when release the key
+
     @Override
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        //up: 38, down: 40, left: 37, right: 39
         switch (keyCode) {
             case 38:
-                frame.airplane.up = false;
+                frame.plane.up = false;
                 break;
             case 40:
-                frame.airplane.down = false;
+                frame.plane.down = false;
                 break;
             case 37:
-                frame.airplane.left = false;
+                frame.plane.left = false;
                 break;
             case 39:
-                frame.airplane.right = false;
+                frame.plane.right = false;
                 break;
         }
     }
-    //load the bullet
     public void addBullet() {
+        Bullet launch = new Bullet(frame.plane.x + 5, frame.plane.y - 20);
+        frame.bullets.add(launch);
 
-        frame.bullets.add(new Bullet(frame.airplane.x + 10, frame.airplane.y - 20));
     }
 }

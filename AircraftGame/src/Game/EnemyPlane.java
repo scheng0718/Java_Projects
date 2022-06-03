@@ -31,27 +31,26 @@ public class EnemyPlane extends Thread {
 
     public void run() {
         while (true) {
-
-                if (hit()) {
-                    System.out.println("hit..................");
-                    //speed will be 0
-                    this.speed = 0;
-                    //explosion, changed enemy pics to another pics showing explosion
-                    this.img = new ImageIcon("img/explosion.jfif").getImage();
-                    //check evey 500 millis
-                    try {
-                        this.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    gf.enemys.remove(this);
-                    //gone after explosion
-                    break;
+            if (hit()) {
+                System.out.println("hit..................");
+                //speed will be 0
+                this.speed = 0;
+                //explosion, changed enemy pics to another pics showing explosion
+                this.img = new ImageIcon("img/explosion.jfif").getImage();
+                //check evey 500 millis
+                try {
+                    this.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                //when enemy planes reach to the boundary, then break
-                if (this.y >= 760) {
-                    break;
-                }
+                gf.enemys.remove(this);
+                //gone after explosion
+                break;
+            }
+            //when enemy planes reach to the boundary, then break
+            if (this.y >= 760) {
+                break;
+            }
             try {
                 this.sleep(10);
             } catch (InterruptedException e) {
