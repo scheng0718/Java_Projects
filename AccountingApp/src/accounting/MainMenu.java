@@ -2,10 +2,8 @@ package accounting;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -34,7 +32,7 @@ public class MainMenu {
     }
 
     public static void showMain() {
-        System.out.println("--------------Accounting App--------------");
+        System.out.println("--------------Main Menu: Accounting App--------------");
         System.out.println("1. Add New Items 2. Delete Items 3. Account History 4. Exit");
         System.out.println("Please enter [1-4]: ");
     }
@@ -60,10 +58,8 @@ public class MainMenu {
                     break;
                 case 3:
                     select();
-                    System.out.println("Account History");
                     break;
                 case 4:
-                    System.out.println("Exit");
                     //Use a flag to exit the while loop
                     flag = false;
                     break;
@@ -72,18 +68,6 @@ public class MainMenu {
             }
         }
         System.out.println("Exit the System, See you again!");
-    }
-
-    private static void removeBills() {
-        System.out.println("Main Menu >> Delete Items");
-        System.out.println("Please enter the ID you want to remove");
-
-        Scanner inScanner = new Scanner(System.in);
-        int id = inScanner.nextInt();
-
-        billsList.remove(id - 1);
-        System.out.println("Delete Success");
-        showMain();
     }
 
     private static void addBills() {
@@ -115,14 +99,25 @@ public class MainMenu {
         showMain();
     }
 
-    /** Three
+    private static void removeBills() {
+        System.out.println("Main Menu >> Delete Items");
+        System.out.println("Please enter the ID you want to remove");
+
+        Scanner inScanner = new Scanner(System.in);
+        int id = inScanner.nextInt();
+
+        billsList.remove(id - 1);
+        System.out.println("Delete Success");
+        showMain();
+    }
+    /** Three options
      * 1. Return all
      * 2. Query by Date
      * 3. Query by type of expenses and revenues
      */
     private static void select() {
         System.out.println("Main Menu >> Account History");
-        System.out.println("1. Return all, 2. Query by Date, 3. Query by Cost or Earn");
+        System.out.println("1. Return All, 2. Query by Date, 3. Query by Cost or Earn");
         Scanner scanner = new Scanner(System.in);
         int op = scanner.nextInt();
         switch(op) {
@@ -140,22 +135,7 @@ public class MainMenu {
         showMain();
     }
 
-    private static void selectByType() {
-        System.out.println("Main Menu >> Account History >> Query by Cost or Earn");
-        System.out.println("Please enter: Cost or Earn");
-        Scanner scanner = new Scanner(System.in);
-        String type = scanner.next();
-        //Filter by type, after version 1.8, we can filter using stream and convert back to List<Bills>
-        List<Bills> newList = billsList.stream().filter(bills -> {
-            String type1 = bills.getType();
-            return type1.equals(type);
-        }).collect(Collectors.toList());
-
-        print(newList);
-    }
-
     private static void selectAll() {
-        System.out.println("Return all");
         print(billsList);
     }
 
@@ -189,11 +169,31 @@ public class MainMenu {
         print(newList);
     }
 
+    private static void selectByType() {
+        System.out.println("Main Menu >> Account History >> Query by Cost or Earn");
+        System.out.println("Please enter: Cost or Earn");
+
+        Scanner scanner = new Scanner(System.in);
+        String type = scanner.next();
+
+        Predicate<Bills> byType = bills -> bills.getType().equals(type);
+        List<Bills> filteredList = billsList.stream().filter(byType).collect(Collectors.toList());
+        print(filteredList);
+
+//        Filter by type, after version 1.8, we can filter using stream and convert back to List<Bills>
+//        List<Bills> newList = billsList.stream().filter(bills -> {
+//            String type1 = bills.getType();
+//            return type1.equals(type);
+//        }).collect(Collectors.toList());
+
+//        print(newList);
+    }
+
     public static void print(List<Bills> bills) {
         System.out.println("ID\t\tName\t\t\tAccount\t\t\tType\t\tTotal\t\tDate\t\t\t\tNotes");
-        for (int i = 0; i < billsList.size(); i++) {
-            Bills billsl = billsList.get(i);
-            System.out.println(i + 1 + "\t\t" + billsl.getName() + "\t\t\t" + billsl.getAccount() + "\t\t\t" + billsl.getType() + "\t\t" + billsl.getTotal() + "\t\t" + billsl.getTime() + "\t\t\t" + billsl.getDesc());
+        for (int i = 0; i < bills.size(); i++) {
+            Bills bills1 = bills.get(i);
+            System.out.println(i + 1 + "\t\t" + bills1.getName() + "\t\t\t" + bills1.getAccount() + "\t\t\t" + bills1.getType() + "\t\t" + bills1.getTotal() + "\t\t" + bills1.getTime() + "\t\t\t" + bills1.getDesc());
         }
     }
     public static void main(String[] args) {
