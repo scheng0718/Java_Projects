@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6f8a5bbf-33bd-4efb-b5e1-bc78177ceb8d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountingApp/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountingApp/out/production/AccountingApp/practice/Bills.class" beforeDir="false" afterPath="$PROJECT_DIR$/AccountingApp/out/production/AccountingApp/practice/Bills.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountingApp/out/production/AccountingApp/practice/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/AccountingApp/out/production/AccountingApp/practice/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountingApp/src/practice/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AccountingApp/src/practice/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +55,8 @@
       <workItem from="1654126385390" duration="838000" />
       <workItem from="1654127280553" duration="79000" />
       <workItem from="1654534136690" duration="343000" />
+      <workItem from="1654747080252" duration="63000" />
+      <workItem from="1654747939222" duration="81000" />
     </task>
     <servers />
   </component>

@@ -136,7 +136,6 @@ public class MainMenu {
     private static void showAll() {
         System.out.println("Main Menu >> History >> All Records");
         print(billsList);
-
     }
     //Case 3.2 Filter By Date
     private static void filterByDate() {
