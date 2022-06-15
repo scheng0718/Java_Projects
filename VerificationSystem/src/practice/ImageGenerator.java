@@ -39,7 +39,7 @@ public class ImageGenerator {
         int w = 80;
         int h = 60;
         for (int i = 0; i < 4; i++) {
-            //3.2 set the random color
+            //3.3 set the random color
             float red = random.nextFloat();
             float green = random.nextFloat();
             float blue = random.nextFloat();
@@ -66,7 +66,7 @@ public class ImageGenerator {
             int y1 = random.nextInt(100);
             int x2 = random.nextInt(30) + 180;
             int y2 = random.nextInt(100);
-            g.drawLine(x1,y1, x2, y2);
+            g.drawLine(x1, y1, x2, y2);
         }
 
         //5. Generate a picture as output and save it in the local folder
